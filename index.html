@@ -1,403 +1,386 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Courier; color: #000000; -webkit-text-stroke: #ffffff}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Courier; color: #000000; -webkit-text-stroke: #ffffff; min-height: 16.0px}
-    span.s1 {font-kerning: none}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <title>歯科助手トレーニング</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+
+    header {
+      background: #0f766e;
+      color: white;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    header h1 { font-size: 18px; margin: 0; }
+    button { cursor: pointer; font: inherit; }
+
+    .icon-btn {
+      background: transparent;
+      color: white;
+      border: 0;
+      font-size: 22px;
+    }
+
+    main {
+      width: min(100%, 760px);
+      margin: auto;
+      padding: 16px 16px 90px;
+    }
+
+    .card {
+      background: white;
+      padding: 18px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px #0f172a0a;
+    }
+
+    .profile {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #ccfbf1;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+    }
+
+    h2 { font-size: 20px; margin: 0 0 14px; }
+    h3 { font-size: 17px; }
+    p { line-height: 1.7; }
+
+    .muted { color: #64748b; font-size: 14px; }
+
+    .task {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .task input {
+      width: 21px;
+      height: 21px;
+      accent-color: #0f766e;
+    }
+
+    .task label { flex: 1; cursor: pointer; }
+
+    .task.done label {
+      color: #64748b;
+      text-decoration: line-through;
+    }
+
+    .primary, .secondary {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 16px;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    .primary { background: #0f766e; color: white; }
+    .secondary { background: #ccfbf1; color: #115e59; }
+
+    .back {
+      border: 0;
+      background: transparent;
+      color: #0f766e;
+      padding: 0 0 16px;
+    }
+
+    .step {
+      padding: 12px;
+      background: #f8fafc;
+      border-radius: 8px;
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .video-box {
+      background: #0f172a;
+      color: white;
+      aspect-ratio: 16 / 9;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      text-align: center;
+      padding: 16px;
+    }
+
+    .play { font-size: 48px; }
+
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 4px;
+      padding-bottom: max(10px, env(safe-area-inset-bottom));
+      z-index: 3;
+    }
+
+    nav button {
+      background: transparent;
+      border: 0;
+      color: #64748b;
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+
+    nav button.active {
+      color: #0f766e;
+      font-weight: bold;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (min-width: 600px) {
+      main { padding-top: 24px; }
+      .card { padding: 24px; }
+    }
   </style>
 </head>
+
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="ja"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="theme-color" content="#0f766e"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;歯科助手トレーニング&lt;/title&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>* { box-sizing: border-box; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>body {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-family: -apple-system, BlinkMacSystemFont,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>"Segoe UI", sans-serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #f1f5f9;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #1e293b;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>header {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #0f766e;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>justify-content: space-between;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>position: sticky;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>top: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>z-index: 2;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>header h1 { font-size: 18px; margin: 0; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>button { cursor: pointer; font: inherit; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.icon-btn {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: transparent;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 22px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>main {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: min(100%, 760px);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 16px 16px 90px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.card {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 18px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>box-shadow: 0 2px 8px #0f172a0a;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.profile {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.avatar {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: 68px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>height: 68px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 50%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #ccfbf1;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: grid;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>place-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 32px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>h2 { font-size: 20px; margin: 0 0 14px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>h3 { font-size: 17px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>p { line-height: 1.7; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.muted { color: #64748b; font-size: 14px; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.task {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 12px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 13px 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid #e2e8f0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.task input {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: 21px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>height: 21px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>accent-color: #0f766e;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.task label { flex: 1; cursor: pointer; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.task.done label {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #64748b;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>text-decoration: line-through;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.primary, .secondary {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: 100%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 13px 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-top: 12px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 600;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.primary { background: #0f766e; color: white; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.secondary { background: #ccfbf1; color: #115e59; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.back {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: transparent;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #0f766e;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 0 0 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.step {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 12px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #f8fafc;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 8px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 8px 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>line-height: 1.6;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.warning {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #fff7ed;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-left: 4px solid #f59e0b;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 12px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 8px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.video-box {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #0f172a;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>aspect-ratio: 16 / 9;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: grid;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>place-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 12px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.play { font-size: 48px; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>nav {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>position: fixed;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>bottom: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>left: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>right: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-top: 1px solid #e2e8f0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>justify-content: space-around;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 10px 4px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding-bottom: max(10px, env(safe-area-inset-bottom));</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>z-index: 3;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>nav button {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: transparent;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #64748b;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 6px 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 13px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>nav button.active {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #0f766e;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: bold;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.hidden { display: none !important; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>@media (min-width: 600px) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>main { padding-top: 24px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.card { padding: 24px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;header&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button class="icon-btn" onclick="showPage('home')"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>aria-label="ホーム"&gt;☰&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;歯科助手トレーニング&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button class="icon-btn" onclick="showSettings()"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>aria-label="設定"&gt;⚙&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;main&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- HOME --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="home"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="card profile"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="avatar"&gt;👤&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h2&gt;安田 彩花&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div&gt;職種：歯科助手&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p class="muted"&gt;トレーニングプロフィール&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;今日のチェックリスト&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p class="muted" id="today"&gt;&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p id="progress"&gt;完了 0 / 3&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="task" id="row-0"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;input type="checkbox" id="task-0"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>onchange="updateTask(0)"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;label for="task-0"&gt;1. 診察室の準備&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="task" id="row-1"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;input type="checkbox" id="task-1"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>onchange="updateTask(1)"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;label for="task-1"&gt;2. 器具の滅菌・消毒&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="task" id="row-2"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;input type="checkbox" id="task-2"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>onchange="updateTask(2)"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;label for="task-2"&gt;3. バキュームの操作確認&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button class="primary" onclick="showPage('detail')"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>詳しく見る / 動画を見る ➜</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- TASK DETAILS --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="detail" class="hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="back" onclick="showPage('home')"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>← 戻る</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;タスク詳細&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h3&gt;器具の滅菌・消毒&lt;/h3&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h3&gt;【作業手順】&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="step"&gt;1. 使用済みの器具を洗浄する&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="step"&gt;2. 超音波洗浄機にかける&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="step"&gt;3. オートクレーブで滅菌する&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h3&gt;【注意事項】&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="warning"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>⚠️ 針や鋭利な器具に注意すること。</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>実際の手順は医院の感染対策マニュアルと</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>指導者の指示に従ってください。</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button class="primary" onclick="showPage('video')"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>🎥 解説動画を再生する</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button class="secondary" onclick="completeTask(1)"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>☑ タスクを完了にする</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- VIDEO --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="video" class="hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="back" onclick="showPage('detail')"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>← 戻る</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;解説動画&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="video-box" id="videoBox"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="play"&gt;▶&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;動画ファイルはまだ設定されていません&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h3&gt;動画タイトル：器具の滅菌手順&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;説明：&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;消毒・滅菌の手順を確認するためのトレーニング動画です。&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button class="primary" onclick="completeTask(1)"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>☑ 確認した（完了にする）</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- SETTINGS --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="settings" class="hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="back" onclick="showPage('home')"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>← 戻る</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;設定&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;歯科助手トレーニング&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p class="muted"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>この試作版では、チェック状況はこのブラウザ内に保存されます。</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button class="secondary" onclick="resetTasks()"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>チェックリストをリセット</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;nav&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="nav-home" class="active"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>onclick="showPage('home')"&gt;🏠 ホーム&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="nav-detail"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>onclick="showPage('detail')"&gt;📋 タスク&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="nav-video"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>onclick="showPage('video')"&gt;🎥 動画&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/nav&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const pages = ['home', 'detail', 'video', 'settings'];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const taskNames = [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>'診察室の準備',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>'器具の滅菌・消毒',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>'バキュームの操作確認'</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>];</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>let completed = [false, false, false];</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// Today's date</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById('today').textContent =</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>new Intl.DateTimeFormat('ja-JP', {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>year: 'numeric', month: '2-digit', day: '2-digit'</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}).format(new Date());</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function showPage(page) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>pages.forEach(name =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById(name).classList.toggle(</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>'hidden', name !== page</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>['home', 'detail', 'video'].forEach(name =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('nav-' + name)</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>.classList.toggle('active', name === page);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>window.scrollTo(0, 0);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function updateTask(index) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>completed[index] =</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('task-' + index).checked;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>renderTasks();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function completeTask(index) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>completed[index] = true;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>renderTasks();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>showPage('home');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function renderTasks() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>completed.forEach((done, index) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('task-' + index).checked = done;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('row-' + index)</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>.classList.toggle('done', done);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const count = completed.filter(Boolean).length;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>document.getElementById('progress').textContent =</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>`完了 ${count} / ${completed.length}`;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function resetTasks() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>completed = [false, false, false];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>renderTasks();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>showPage('home');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function showSettings() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>showPage('settings');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>renderTasks();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+  <header>
+    <button class="icon-btn" onclick="showPage('home')"
+      aria-label="ホーム">☰</button>
+    <h1>歯科助手トレーニング</h1>
+    <button class="icon-btn" onclick="showSettings()"
+      aria-label="設定">⚙</button>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home">
+      <div class="card profile">
+        <div class="avatar">👤</div>
+        <div>
+          <h2>安田 彩花</h2>
+          <div>職種：歯科助手</div>
+          <p class="muted">トレーニングプロフィール</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>今日のチェックリスト</h2>
+        <p class="muted" id="today"></p>
+        <p id="progress">完了 0 / 3</p>
+
+        <div class="task" id="row-0">
+          <input type="checkbox" id="task-0"
+            onchange="updateTask(0)">
+          <label for="task-0">1. 診察室の準備</label>
+        </div>
+
+        <div class="task" id="row-1">
+          <input type="checkbox" id="task-1"
+            onchange="updateTask(1)">
+          <label for="task-1">2. 器具の滅菌・消毒</label>
+        </div>
+
+        <div class="task" id="row-2">
+          <input type="checkbox" id="task-2"
+            onchange="updateTask(2)">
+          <label for="task-2">3. バキュームの操作確認</label>
+        </div>
+
+        <button class="primary" onclick="showPage('detail')">
+          詳しく見る / 動画を見る ➜
+        </button>
+      </div>
+    </section>
+
+    <!-- TASK DETAILS -->
+    <section id="detail" class="hidden">
+      <button class="back" onclick="showPage('home')">
+        ← 戻る
+      </button>
+
+      <div class="card">
+        <h2>タスク詳細</h2>
+        <h3>器具の滅菌・消毒</h3>
+
+        <h3>【作業手順】</h3>
+        <div class="step">1. 使用済みの器具を洗浄する</div>
+        <div class="step">2. 超音波洗浄機にかける</div>
+        <div class="step">3. オートクレーブで滅菌する</div>
+
+        <h3>【注意事項】</h3>
+        <div class="warning">
+          ⚠️ 針や鋭利な器具に注意すること。
+          実際の手順は医院の感染対策マニュアルと
+          指導者の指示に従ってください。
+        </div>
+
+        <button class="primary" onclick="showPage('video')">
+          🎥 解説動画を再生する
+        </button>
+
+        <button class="secondary" onclick="completeTask(1)">
+          ☑ タスクを完了にする
+        </button>
+      </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section id="video" class="hidden">
+      <button class="back" onclick="showPage('detail')">
+        ← 戻る
+      </button>
+
+      <div class="card">
+        <h2>解説動画</h2>
+
+        <div class="video-box" id="videoBox">
+          <div>
+            <div class="play">▶</div>
+            <p>動画ファイルはまだ設定されていません</p>
+          </div>
+        </div>
+
+        <h3>動画タイトル：器具の滅菌手順</h3>
+        <p>説明：</p>
+        <p>消毒・滅菌の手順を確認するためのトレーニング動画です。</p>
+
+        <button class="primary" onclick="completeTask(1)">
+          ☑ 確認した（完了にする）
+        </button>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settings" class="hidden">
+      <button class="back" onclick="showPage('home')">
+        ← 戻る
+      </button>
+      <div class="card">
+        <h2>設定</h2>
+        <p>歯科助手トレーニング</p>
+        <p class="muted">
+          この試作版では、チェック状況はこのブラウザ内に保存されます。
+        </p>
+        <button class="secondary" onclick="resetTasks()">
+          チェックリストをリセット
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <nav>
+    <button id="nav-home" class="active"
+      onclick="showPage('home')">🏠 ホーム</button>
+    <button id="nav-detail"
+      onclick="showPage('detail')">📋 タスク</button>
+    <button id="nav-video"
+      onclick="showPage('video')">🎥 動画</button>
+  </nav>
+
+  <script>
+    const pages = ['home', 'detail', 'video', 'settings'];
+    const taskNames = [
+      '診察室の準備',
+      '器具の滅菌・消毒',
+      'バキュームの操作確認'
+    ];
+
+    let completed = [false, false, false];
+
+    // Today's date
+    document.getElementById('today').textContent =
+      new Intl.DateTimeFormat('ja-JP', {
+        year: 'numeric', month: '2-digit', day: '2-digit'
+      }).format(new Date());
+
+    function showPage(page) {
+      pages.forEach(name => {
+        document.getElementById(name).classList.toggle(
+          'hidden', name !== page
+        );
+      });
+
+      ['home', 'detail', 'video'].forEach(name => {
+        document.getElementById('nav-' + name)
+          .classList.toggle('active', name === page);
+      });
+
+      window.scrollTo(0, 0);
+    }
+
+    function updateTask(index) {
+      completed[index] =
+        document.getElementById('task-' + index).checked;
+
+      renderTasks();
+    }
+
+    function completeTask(index) {
+      completed[index] = true;
+      renderTasks();
+      showPage('home');
+    }
+
+    function renderTasks() {
+      completed.forEach((done, index) => {
+        document.getElementById('task-' + index).checked = done;
+        document.getElementById('row-' + index)
+          .classList.toggle('done', done);
+      });
+
+      const count = completed.filter(Boolean).length;
+      document.getElementById('progress').textContent =
+        `完了 ${count} / ${completed.length}`;
+    }
+
+    function resetTasks() {
+      completed = [false, false, false];
+      renderTasks();
+      showPage('home');
+    }
+
+    function showSettings() {
+      showPage('settings');
+    }
+
+    renderTasks();
+  </script>
 </body>
 </html>
